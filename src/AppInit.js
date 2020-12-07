@@ -10,6 +10,8 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
+import AppNavigator from './navigations/AppNavigator';
+
 class AppInit extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +22,7 @@ class AppInit extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text> AppInit </Text>
+        <AppNavigator />
       </View>
     );
   }
@@ -28,11 +30,7 @@ class AppInit extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    width: wp('100%'),
-    height: hp('100%'),
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ffffff',
+    flex: 1,
   },
 });
 

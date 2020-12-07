@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -18,9 +17,7 @@ import AppInit from './src/AppInit';
 const App: () => React$Node = () => (
   <>
     <StatusBar barStyle="dark-content" />
-    <SafeAreaView>
-      <AppInit />
-    </SafeAreaView>
+    <AppInit />
   </>
 );
 
