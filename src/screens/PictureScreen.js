@@ -31,7 +31,7 @@ export default function PictureScreen({
   }, [navigation, goBackPress, screen, dispatch]);
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
       <Text> PictureScreen </Text>
     </View>
   );
