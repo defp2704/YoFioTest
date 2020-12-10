@@ -7,7 +7,7 @@ module.exports = {
     'arrow-body-style': 'warn',
     'no-use-before-define': ['error', { variables: false }],
     'react/prop-types': ['error', { ignore: ['navigation'] }],
-    'react-hooks/exhaustive-deps': 'warn',
+    'react-hooks/exhaustive-deps': false,
     'no-param-reassign': [2, { props: false }],
     'react/display-name': [0],
     'class-methods-use-this': [
