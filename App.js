@@ -8,16 +8,20 @@
 
 import React from 'react';
 import {
-  SafeAreaView,
   StatusBar,
 } from 'react-native';
+
+import { Provider } from 'react-redux';
+import Store from './src/store';
 
 import AppInit from './src/AppInit';
 
 const App: () => React$Node = () => (
   <>
     <StatusBar barStyle="dark-content" />
-    <AppInit />
+    <Provider store={Store} >
+      <AppInit />
+    </Provider>
   </>
 );
 

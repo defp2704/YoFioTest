@@ -1,18 +1,38 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  onChangesTab,
+} from '../actions/navigationActions';
 
-export default class VideoScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+export default function VideoScreen({
+  navigation,
+}) {
+  const store = useSelector(({ nav }) => nav);
 
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text> VideoScreen </Text>
-      </View>
-    );
-  }
+  const {
+    goBackPress,
+    screen,
+  } = store;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    navigation.addListener('focus', () => {
+      dispatch(onChangesTab({ goBack: false, screen: 'video' }));
+    });
+  }, [dispatch, navigation]);
+
+  useEffect(() => {
+    if (navigation.canGoBack() && goBackPress && screen === 'video') {
+      dispatch(onChangesTab({ goBack: false, screen: 'video' }));
+      navigation.goBack();
+    }
+  }, [navigation, goBackPress, screen, dispatch]);
+
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text> VideoScreen </Text>
+    </View>
+  );
 }
