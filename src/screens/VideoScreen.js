@@ -8,11 +8,12 @@ import {
 export default function VideoScreen({
   navigation,
 }) {
-  const store = useSelector(({ nav }) => nav);
+  const store = useSelector(({ nav, files }) => ({ nav, files }));
 
   const {
     goBackPress,
     screen,
+    files: { videos },
   } = store;
 
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ export default function VideoScreen({
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
-      <Text> VideoScreen </Text>
+      <Text>Videos: {videos.length} </Text>
     </View>
   );
 }

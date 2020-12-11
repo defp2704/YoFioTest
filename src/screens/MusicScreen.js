@@ -8,11 +8,12 @@ import {
 export default function MusicScreen({
   navigation,
 }) {
-  const store = useSelector(({ nav }) => nav);
+  const store = useSelector(({ nav, files }) => ({ nav, files }));
 
   const {
     goBackPress,
     screen,
+    files: { audios },
   } = store;
 
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ export default function MusicScreen({
   
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
-      <Text> MusicScreen </Text>
+      <Text>Audios: {audios.length} </Text>
     </View>
   );
 }

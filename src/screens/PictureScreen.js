@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ActivityIndicator } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   onChangesTab,
@@ -8,11 +8,12 @@ import {
 export default function PictureScreen({
   navigation,
 }) {
-  const store = useSelector(({ nav }) => nav);
+  const store = useSelector(({ nav, files }) => ({ nav, files }));
 
   const {
     goBackPress,
     screen,
+    files: { images, isLoading },
   } = store;
 
   const dispatch = useDispatch();
@@ -32,7 +33,8 @@ export default function PictureScreen({
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
-      <Text> PictureScreen </Text>
+      <ActivityIndicator animating={isLoading} color='black' />
+      <Text>Pictures: {images.length} </Text>
     </View>
   );
 }
