@@ -1,10 +1,14 @@
+import FileSystem from 'react-native-fs';
+
 import {
   typesImage,
   typesAudio,
   typesVideo,
 } from './constants';
 
-export const identifyFile = (fileStorage, filePath) => {
+const convertToBase64 = async (path) => FileSystem.readFile(path, 'base64');
+
+const identifyFile = async (fileStorage, filePath) => {
   const extensionFile = filePath.split('.').pop().toUpperCase();
 
   if (typesImage[extensionFile]) {
@@ -17,3 +21,10 @@ export const identifyFile = (fileStorage, filePath) => {
     fileStorage.others.push(filePath);
   }
 };
+
+
+
+export {
+  convertToBase64,
+  identifyFile,
+}
