@@ -8,11 +8,12 @@ import {
 export default function OtherFilesScreen({
   navigation,
 }) {
-  const store = useSelector(({ nav }) => nav);
+  const store = useSelector(({ nav, files }) => ({ nav, files }));
 
   const {
     goBackPress,
     screen,
+    files: { others },
   } = store;
 
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ export default function OtherFilesScreen({
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
-      <Text> OtherFilesScreen </Text>
+      <Text>OthersFiles: {others.length} </Text>
     </View>
   );
 }

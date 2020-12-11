@@ -1,25 +1,28 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   StyleSheet,
 } from 'react-native';
 
+import { useDispatch } from 'react-redux';
+import { permission, loadFiles } from './actions/fileSytemAction';
+
 import AppNavigator from './navigations/AppNavigator';
 
-class AppInit extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+function AppInit() {
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <AppNavigator />
-      </View>
-    );
-  }
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(permission());
+    dispatch(loadFiles());
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      <AppNavigator />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
