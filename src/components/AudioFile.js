@@ -8,7 +8,7 @@ const AudioFile = ({
   itemPath,
 }) => {
   const [uri, setUri] = useState('');
-  const [name, setName] =  useState('')
+  const [name, setName] =  useState('');
   const [duration, setDuration] = useState('0:00');
   const playerRef = useRef();
 
