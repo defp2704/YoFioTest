@@ -1,9 +1,19 @@
 import React, { useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, FlatList, StyleSheet, } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
+
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
 import {
   onChangesTab,
 } from '../actions/navigationActions';
+
+import { 
+  AudioFile,
+} from '../components'
 
 export default function MusicScreen({
   navigation,
@@ -30,10 +40,39 @@ export default function MusicScreen({
       dispatch(onChangesTab({ goBack: false, screen: 'musica' }));
     }
   }, [navigation, goBackPress, screen, dispatch]);
+
+
+  const renderAudios = ({ item: itemPath }) => (
+    <View style={styles.containerAudio}>
+      <AudioFile itemPath={itemPath} />
+    </View>
+  )
+
+  const getKeyItem = (_, index) => index.toString();
   
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
-      <Text>Audios: {audios.length} </Text>
+    <View style={styles.container}>
+      <FlatList
+        data={audios}
+        extraData={audios}
+        renderItem={renderAudios}
+        keyExtractor={getKeyItem}
+        numColumns={2}
+      /> 
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+  },
+  containerAudio: {
+    width: wp('45%'),
+    height: hp('30%'),
+    margin: wp('2%'),
+  }, 
+});
