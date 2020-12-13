@@ -1,4 +1,5 @@
-import { ADDFILES } from '../actions/actionsTypes';
+import { ADDFILES, CHECKPERMISSIONS } from '../actions/actionsTypes';
+import { permission } from '../actions/fileSytemAction';
 
 const initialState = {
   images: [],
@@ -6,6 +7,7 @@ const initialState = {
   audios: [],
   others: [],
   isLoading: true,
+  permissionsAndroid: false,
 }
 
 const fileSystemReducer = (state = initialState, action) => {
@@ -19,6 +21,11 @@ const fileSystemReducer = (state = initialState, action) => {
         others: action.payload.others,
         isLoading: false,
       };
+    case  CHECKPERMISSIONS:
+      return {
+        ...state,
+        permissionsAndroid: action.payload,
+      }
     default:
       return state
   }

@@ -23,7 +23,7 @@ export default function PictureScreen({
   const store = useSelector(({ nav, files }) => ({ nav, files }));
 
   const {
-    goBackPress,
+    nav: { goBackPress },
     screen,
     files: { images, isLoading },
   } = store;

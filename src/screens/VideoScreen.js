@@ -23,7 +23,7 @@ export default function VideoScreen({
   const store = useSelector(({ nav, files }) => ({ nav, files }));
 
   const {
-    goBackPress,
+    nav: { goBackPress },
     screen,
     files: { videos },
   } = store;

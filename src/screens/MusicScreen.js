@@ -21,7 +21,7 @@ export default function MusicScreen({
   const store = useSelector(({ nav, files }) => ({ nav, files }));
 
   const {
-    goBackPress,
+    nav: { goBackPress },
     screen,
     files: { audios },
   } = store;

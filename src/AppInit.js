@@ -4,19 +4,29 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { permission, loadFiles } from './actions/fileSytemAction';
 
 import AppNavigator from './navigations/AppNavigator';
 
 function AppInit() {
+  const store = useSelector(({ files }) => ({ files }));
+
+  const {
+    files: { permissionsAndroid },
+  } = store;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(permission());
-    dispatch(loadFiles());
   }, []);
+
+  useEffect(() => {
+    if (permissionsAndroid) {
+      dispatch(loadFiles());
+    }
+  }, [permissionsAndroid])
 
   return (
     <View style={styles.container}>
