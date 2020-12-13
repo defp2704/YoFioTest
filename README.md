@@ -6,9 +6,9 @@ prueba para yo fio
 
 npm install o npm i
 
-## Compilaar 
+## Compilar
 
-npx react-native run-android
+npx react-native run-android 
 
 ## Generar APK
 
