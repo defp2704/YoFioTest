@@ -1,9 +1,21 @@
 import React, { useEffect } from 'react';
-import { View, Text } from 'react-native';
+import {
+  View,
+  FlatList,
+  StyleSheet,
+} from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   onChangesTab,
 } from '../actions/navigationActions';
+import  {
+  VideoFile,
+} from '../components'
+
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen'
 
 export default function VideoScreen({
   navigation,
@@ -31,9 +43,39 @@ export default function VideoScreen({
     }
   }, [navigation, goBackPress, screen, dispatch]);
 
+  const renderVideo = ({ item: itemPath }) => (
+    <View style={styles.containerVideo}>
+      <VideoFile itemPath={itemPath} />
+    </View>
+  )
+
+  const getKeyItem = (_, index) => index.toString();
+
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
-      <Text>Videos: {videos.length} </Text>
+    <View style={styles.container}>
+      <FlatList
+        data={videos}
+        extraData={videos}
+        renderItem={renderVideo}
+        keyExtractor={getKeyItem}
+        numColumns={2}
+      /> 
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+  },
+  containerVideo: {
+    width: wp('45%'),
+    height: hp('30%'),
+    margin: wp('2%'),
+    borderRadius: wp('4%'),
+    overflow: 'hidden',
+  }, 
+});

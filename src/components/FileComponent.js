@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet } from 'react-native';
 import FileSystem from  'react-native-fs';
-import LottieView from 'lottie-react-native';
-import loadingSpin from '../../assets/lodingSping.json';
 
 const loadImg = require('../../assets/spin.jpg');
 
